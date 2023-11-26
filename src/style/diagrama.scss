@@ -1,0 +1,15 @@
+.diagrama{
+  padding: 40px 0 80px;
+  &__list{
+    display: flex;
+    align-items: center;
+    column-gap: 20px;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  &__table{
+    width: 600px;
+    margin: 0 auto;
+  }
+}
