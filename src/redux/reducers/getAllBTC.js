@@ -1,44 +1,43 @@
-import {createSlice, createAsyncThunk} from "@reduxjs/toolkit";
-import axios from "../../utils/axios";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-export const getAllBTC = createAsyncThunk(
-    "BTC/getAllBTC",
-    async (_,thunkAPI) => {
-        try {
-            const res = await axios(`ws://127.0.0.1:8000/ws/bitcoin/`);
-            return res.data
-        }
-        catch (error) {
-            return thunkAPI.rejectWithValue(error)
+export const getAllCrypto = createAsyncThunk(
+    "crypto/getAllCrypto",
+    async (_, thunkAPI) => {
+        try{
+            const ws = new window.WebSocket("ws://127.0.0.1:8000/ws/bitcoin/");
+            ws.onmessage = (event) => {
+              JSON.parse(event.data);
+            };
+        } catch (err){
+            return thunkAPI.rejectWithValue(err)
         }
     }
-
 );
 
-const getAllBTCSlice = createSlice({
-    name: "getAllBTC",
+const getAllCryptoSlice = createSlice({
+    name: "getAllCrypto",
     initialState: {
         data: [],
         isLoading: false,
-        error: ''
+        error: "",
     },
     reducers: {},
     extraReducers: (builder) => {
         builder
-            .addCase(getAllBTC.pending, state => {
-                state.isLoading = true
+            .addCase(getAllCrypto.pending, (state) => {
+                state.isLoading = true;
             })
-            .addCase(getAllBTC.fulfilled, (state, {payload}) => {
+            .addCase(getAllCrypto.fulfilled, (state, { payload }) => {
                 state.isLoading = false;
-                state.data = payload
+                state.data = payload;
             })
-            .addCase(getAllBTC.rejected, (state, {payload}) => {
+            .addCase(getAllCrypto.rejected, (state, { payload }) => {
                 state.error = payload;
-                state.isLoading = false
-            })
-    }
+                state.isLoading = false;
+            });
+    },
 });
 
-export const {} = getAllBTCSlice.actions;
+export const {} = getAllCryptoSlice.actions;
 
-export default getAllBTCSlice.reducer
+export default getAllCryptoSlice.reducer;

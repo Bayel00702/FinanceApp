@@ -1,13 +1,22 @@
 import React from 'react';
 import ChartJS from '../Diagramma/Chart/Chart';
 
-const Diagramma = () => {
+const Diagramma = ({data}) => {
+
+    const name = data.map((item) => {
+        return item.symbol
+    })
+
+
+    const price = data.map((item) => {
+        return item.price
+    })
     const chartData = {
-        labels: ['Label 1', 'Label 2', 'Label 3', 'Label 3', 'Label 3', 'Label 3'],
+        labels: name,
         datasets: [
             {
                 label: 'Data Set 1',
-                data: [10, 20, 30, 20, 5, 90],
+                data: price,
                 backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)'],
                 borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)'],
                 borderWidth: 1,

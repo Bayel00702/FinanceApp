@@ -14,7 +14,7 @@ const Header = () => {
                         <Link className='header__center-link' to=''>Popular product</Link>
                     </div>
                     <div className="header__right">
-                        <Link className='header__right-link' to=''>Log In</Link>
+                        <Link className='header__right-link' to='/login'>Log In</Link>
                         <Link className='header__right-link' to='/register'>Sign In</Link>
                     </div>
                 </nav>

@@ -2,7 +2,7 @@ import React from 'react';
 import InputMask from 'react-input-mask';
 import {useForm} from 'react-hook-form'
 import axios from "../../utils/axios";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {authUser} from "../../redux/reducers/auth";
 import {useLocation, useNavigate} from "react-router-dom";
 
@@ -25,26 +25,40 @@ const Form = () => {
     });
 
     const handleLogin = (data) => {
-        axios.post('/api/login', {...data})
+        axios.post('/auth/token/login/', {...data})
             .then(res => {
             dispatch(authUser(res.data));
             navigate('/');
+            localStorage.setItem('@@remember-rootState', JSON.stringify(data))
         }).catch((err) =>  console.log(err));
     }
 
     const handleRegister = (data) => {
-        axios.post('/api/register', {...data}).then(res =>
-            {
+        axios.post('/api/register/', {...data}).then(res => {
                 dispatch(authUser(res.data));
                 navigate('/');
+                localStorage.setItem('@@remember-rootState', JSON.stringify(res.data))
             })
             .catch((err) =>  console.log(err));
     };
 
+    const onSubmit = (data) => {
+        const {...user} = data
+
+        if (location.pathname === '/login'){
+            handleLogin(user)
+        } else {
+            handleRegister(user)
+        }
+    }
+
+
+
+
     return (
         <section className='form'>
             <div className="container">
-                <form onSubmit={handleSubmit(handleRegister)} action="" className="form__form">
+                <form onSubmit={handleSubmit(onSubmit)} action="" className="form__form">
                     {
                         location.pathname === '/register' ?
                             <h2 className="form__title">
@@ -58,46 +72,12 @@ const Form = () => {
                         <h3 className="form__subtitle">Email:</h3>
                         <input className='form__input' placeholder='Enter email' type="email" {...register('email')}/>
                     </label>
-                    {
-                        location.pathname === '/register' ?
+
                             <label htmlFor="" className="form_labelt">
                                 <h3 className="form__subtitle">Name:</h3>
                                 <input className='form__input' placeholder='Enter name' type="text" {...register('username')}/>
-                            </label> : ''
-                    }
+                            </label>
 
-                    {
-                        location.pathname === '/register' ?
-                            <label htmlFor="" className="form_labelt">
-                                <h3 className="form__subtitle">Name:</h3>
-                                <input className='form__input' placeholder='Enter name' type="text" {...register('first_name')}/>
-                            </label> : ''
-                    }
-
-                    {
-                        location.pathname === '/register' ?
-                            <label htmlFor="" className="form_labelt">
-                                <h3 className="form__subtitle">Name:</h3>
-                                <input className='form__input' placeholder='Enter name' type="text" {...register('last_name')}/>
-                            </label> : ''
-                    }
-
-                    {
-                        location.pathname === '/register' ?
-                            <label htmlFor="" className="form__label">
-                                <h3 className="form__subtitle">Your birthday</h3>
-                                <input className='form__input' type="date" {...register('birthday')}/>
-                            </label> : ''
-                    }
-
-
-                    {
-                        location.pathname === '/register' ?
-                            <label htmlFor="" className="form__label">
-                                <h3 className="form__subtitle">Phone*</h3>
-                                <InputMask mask={`+\\9\\96(999)99-99-99`} type='tel'  {...register('mobile')} className='form__input' placeholder='Номер телефона' />
-                            </label> : ''
-                    }
 
 
 

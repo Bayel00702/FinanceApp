@@ -4,6 +4,7 @@ import Home from "../pages/Home/Home";
 import Form from "../components/Form/Form";
 import Register from "../pages/Register/Register";
 import Login from "../pages/Login/Login";
+import AddBtc from "../components/Addbtc/AddBTC";
 
 
 export default function Router () {
@@ -15,6 +16,10 @@ export default function Router () {
                 {
                     path: '/',
                     element: <Home/>
+                },
+                {
+                    path: '/addbtc',
+                    element: <AddBtc/>
                 }
             ]
         },
