@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import Diagramma from "../../components/Diagramma/Diagramma";
+import Diagramma from "../../components/Diagramma/Diagramma.jsx";
 import AllCryptocurrency from "../../components/AllCryptocurrency/AllCryptocurrency";
 
 const Home = () => {

@@ -27,14 +27,12 @@ const Diagramma = ({data}) => {
     return (
         <section className="diagrama">
             <ul className="diagrama__list">
-                <li className="diagrama__item">BNB</li>
-                <li className="diagrama__item">BTC</li>
-                <li className="diagrama__item">
-                    Ethereum
-                </li>
-                <li className="diagrama__item">
-                    Ripple
-                </li>
+                {
+                    data.map((item) => (
+                        <li className="diagrama__item">{item.symbol}</li>
+                    ))
+                }
+
             </ul>
             <div className="diagrama__table">
                 <ChartJS data={chartData}  />

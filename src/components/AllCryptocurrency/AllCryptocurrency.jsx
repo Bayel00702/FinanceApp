@@ -5,30 +5,29 @@ import WebSocket from 'ws'
 const AllCryptocurrency = ({data}) => {
 
 
-
-
     return (
         <section className='all'>
             <div className="container">
-                <ul className="all__list">
-                    <li className="all__item">Title</li>
-                    <li className="all__item">Price</li>
-                    <li className="all__item">Dif</li>
-                </ul>
-                <div className="all__row">
+
+                <table className="all__row all__table">
+                    <tr className='all__table-tr'>
+                        <th className='all__table-th'>Title</th>
+                        <th className='all__table-th'>price</th>
+                    </tr>
+
                     {
                         data?.map((item, idx) => (
-                            <div key={item.id || idx} className="all__card">
-                                <div className="all__card-left">
-                                    <img src={Logo} alt="" className="all__card-img"/>
-                                    <h3 className="all__card-title">{item.symbol || 'Loading...'}</h3>
-                                </div>
-                                <p className="all__card-price">{item.price || 'Loading...'}</p>
-                            </div>
+                            <>
+
+                                <tr className='all__table-tr'>
+                                    <td className="all__card-title all__table-td">{item.symbol || 'Loading...'}</td>
+                                    <td className="all__card-price all__table-td">${item.price || 'Loading...'}</td>
+                                </tr>
+                            </>
                         ))
                     }
 
-                </div>
+                </table>
             </div>
         </section>
     );

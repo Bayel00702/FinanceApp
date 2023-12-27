@@ -24,6 +24,7 @@ const Form = () => {
         mode: "onBlur"
     });
 
+
     const handleLogin = (data) => {
         axios.post('/auth/token/login/', {...data})
             .then(res => {
@@ -37,7 +38,7 @@ const Form = () => {
         axios.post('/api/register/', {...data}).then(res => {
                 dispatch(authUser(res.data));
                 navigate('/');
-                localStorage.setItem('@@remember-rootState', JSON.stringify(res.data))
+                localStorage.setItem('@@remember-rootState', JSON.stringify(data))
             })
             .catch((err) =>  console.log(err));
     };

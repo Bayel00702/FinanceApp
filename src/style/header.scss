@@ -29,6 +29,12 @@
     align-items: center;
     column-gap: 30px;
 
+    &-logOut{
+      font-size: 20px;
+      background: transparent;
+      border: none;
+    }
+
     &-link{
       font-size: 25px;
       color: black;
