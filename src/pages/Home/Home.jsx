@@ -21,10 +21,17 @@ const Home = () => {
             ws.close();
         };
     }, []);
+
+    console.log(JSON.parse(localStorage.getItem("@@remember-rootState")))
     return (
         <div>
-            <Diagramma data={data}/>
-            <AllCryptocurrency data={data}/>
+            {JSON.parse(localStorage.getItem("@@remember-rootState"))?.user ? <>
+                <Diagramma data={data}/>
+                <AllCryptocurrency data={data}/>
+            </>  : <div className='container'>
+                <h1 className='form__title'>Do you want to look at the price of cryptocurrencies? Register</h1>
+            </div>}
+
         </div>
     );
 };
