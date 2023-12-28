@@ -81,7 +81,7 @@ const Form = () => {
                     </label>
 
 
-                            <label htmlFor="" className="form_labelt">
+                            <label htmlFor="" className="form_label">
                                 <h3 className="form__subtitle">Name:</h3>
                                 <input className='form__input' placeholder='Enter name' type="text" {...register('username')}/>
                             </label>

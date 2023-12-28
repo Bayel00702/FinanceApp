@@ -15,7 +15,7 @@ const Header = () => {
             <div className="container">
                 <nav className="header__nav">
                     <div className="header__left">
-                        BT<span>C</span>
+                        B T <span>C</span>
                     </div>
                     <div className="header__center">
                         <Link className='header__center-link' to=''>All product</Link>

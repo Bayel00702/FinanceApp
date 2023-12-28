@@ -1,0 +1,19 @@
+.profile{
+  padding: 40px;
+  &__row{
+    display: flex;
+    justify-content: center;
+    column-gap: 200px;
+    &-list{
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    &-btn{
+      margin-top: 30px;
+    }
+  }
+  &__item{
+
+  }
+}
