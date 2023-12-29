@@ -20,7 +20,7 @@ const Profile = () => {
                             <button className={`profile__item ${tab === 'Update password' ? 'active' : ''}`} onClick={() => setTab('Update password')}>Update password</button>
                         </div>
                         <div className="profile__row-btn">
-                            <button onClick={() => dispatch(logOutUser())} className='profile__left-logout'>LogOut</button>
+                            <button onClick={() => dispatch(logOutUser())} className='profile__row-logout'>LogOut</button>
                         </div>
                     </div>
                     {
@@ -50,29 +50,48 @@ const Profile = () => {
                                     </label>
                                     <label htmlFor="" className="profile__right-label">
                                         <h3 className="profile__right-subtitle">User Name:</h3>
-                                        <input className='profile__right-input' placeholder={user.username} type="email"/>
+                                        <input className='profile__right-input' placeholder={user.username} type="text"/>
                                     </label>
                                     <label htmlFor="" className="profile__right-label">
                                         <h3 className="profile__right-subtitle">First Name:</h3>
-                                        <input className='profile__right-input' placeholder={user.first_name} type="email"/>
+                                        <input className='profile__right-input' placeholder={user.first_name} type="text"/>
                                     </label>
                                     <label htmlFor="" className="profile__right-label">
                                         <h3 className="profile__right-subtitle">Last name:</h3>
-                                        <input className='profile__right-input' placeholder={user.last_name} type="email"/>
-                                    </label>
-                                    <label htmlFor="" className="profile__right-label">
-                                        <h3 className="profile__right-subtitle">Birthday:</h3>
-                                        <input className='profile__right-input' placeholder={user.birthday} type="email"/>
+                                        <input className='profile__right-input' placeholder={user.last_name} type="text"/>
                                     </label>
                                     <label htmlFor="" className="profile__right-label">
                                         <h3 className="profile__right-subtitle">Mobile:</h3>
-                                        <input className='profile__right-input' placeholder={user.mobile} type="email"/>
+                                        <input className='profile__right-input' placeholder={user.mobile} type="number"/>
                                     </label>
+                                    <label htmlFor="" className="profile__right-label">
+                                        <h3 className="profile__right-subtitle">Birthday:</h3>
+                                        <input className='profile__right-input' placeholder={user.birthday} type="date"/>
+                                    </label>
+
+                                    <br/>
                                     <button className='profile__right-btn'>Submit</button>
                                 </form>
                             </div> : tab === 'Update password' ?
                                 <div className='profile__right'>
-                                    <h1>q</h1>
+                                    <div className='profile__right'>
+                                        <form className='profile__right-form'>
+                                            <label htmlFor="" className="profile__right-label">
+                                                <h3 className="profile__right-subtitle">Email:</h3>
+                                                <input className='profile__right-input' placeholder={user.email} type="email"/>
+                                            </label>
+                                            <label htmlFor="" className="profile__right-label">
+                                                <h3 className="profile__right-subtitle">User Name:</h3>
+                                                <input className='profile__right-input' placeholder={user.username} type="text"/>
+                                            </label>
+                                            <label htmlFor="" className="profile__right-label">
+                                                <h3 className="profile__right-subtitle">First Name:</h3>
+                                                <input className='profile__right-input' placeholder={user.first_name} type="text"/>
+                                            </label>
+                                            <br/>
+                                            <button className='profile__right-btn'>Submit</button>
+                                        </form>
+                                    </div>
                                 </div> : ''
                     }
                 </div>

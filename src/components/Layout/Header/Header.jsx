@@ -25,7 +25,6 @@ const Header = () => {
                         JSON.parse(localStorage.getItem('@@remember-rootState'))?.user ?
                             <div className="header__right">
                                 <Link to='/profile'><span className='header__right-icon'><AiOutlineUser/></span></Link>
-                                <button onClick={() => dispatch(logOutUser())} className="header__right-logOut">Log Out</button>
                             </div>
                              :
                             <div className="header__right">

@@ -9,11 +9,85 @@
       flex-direction: column;
       gap: 20px;
     }
-    &-btn{
+    &-logout{
       margin-top: 30px;
+      border-radius: 15px;
+      cursor: pointer;
+      background: red;
+      color: rgb(240, 185, 11);
+      padding: 4px 10px 4px 10px;
+      font-size: 16px;
+      &:hover{
+        background: transparent;
+        color: white;
+      }
     }
   }
   &__item{
-
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    color: black;
+    font-size: 16px;
+    font-weight: 500;
+    background: orange;
+    padding: 4px;
+    border-radius: 15px;
+    outline: none;
+    cursor: pointer;
+    &.active{
+      padding: 10px 20px;
+      background: rgb(240, 185, 11);
+      border-radius: 15px;
+    }
+    &:hover{
+      padding: 10px 20px;
+      background: rgb(240, 185, 11);
+      border-radius: 15px;
+    }
+  }
+  &__right{
+    display: flex;
+    flex-direction: row;
+    gap:20px;
+    &-btn{
+      padding: 14px 30px;
+      background: transparent;
+      border: 1px solid rgb(240, 185, 11);
+      border-radius: 12px;
+      color: white;
+      transition: 1s;
+      &:hover{
+        background: rgb(240, 185, 11);
+        color: black;
+        font-weight: 700;
+        transition: 1s;
+      }
+    }
+    &-subtitle{
+      font-weight: 400;
+      font-size: 16px;
+      margin-bottom: 10px;
+      color: orange;
+    }
+    &-input{
+      padding: 10px 20px;
+      width: 300px;
+      border: 1px solid black;
+      margin-bottom: 20px;
+      border-radius: 20px;
+      outline: none;
+      color: black;
+      font-size: 15px;
+      &::placeholder{
+        color: gray;
+        font-size: 14px;
+      }
+    }
+    &-item{
+      color: white;
+      font-size: 16px;
+      font-weight: 500;
+    }
   }
 }
