@@ -7,7 +7,7 @@ const Profile = () => {
     const dispatch = useDispatch()
     const [tab,setTab] = useState("Profile");
     const user = JSON.parse(localStorage.getItem("@@remember-rootState")).user;
-    console.log(user);
+
 
     return (
         <section className='profile'>
@@ -45,7 +45,7 @@ const Profile = () => {
                             <div className='profile__right'>
                                 <form className='profile__right-form'>
                                     <label htmlFor="" className="profile__right-label">
-                                        <h3 className="profile__right-subtitle">Email:</h3>
+                                        <h3  className="profile__right-subtitle">Email:</h3>
                                         <input className='profile__right-input' placeholder={user.email} type="email"/>
                                     </label>
                                     <label htmlFor="" className="profile__right-label">

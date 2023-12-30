@@ -31,6 +31,7 @@ const Form = () => {
             dispatch(authUser(res.data));
             navigate('/');
             localStorage.setItem('@@remember-rootState', JSON.stringify({"user":{...res.data}}))
+                console.log(res)
         }).catch((err) =>  console.log(err));
     }
 
@@ -46,7 +47,7 @@ const Form = () => {
 
     const onSubmit = (data) => {
         const {...user} = data
-
+        console.log({...user})
         if (location.pathname === '/login'){
             handleLogin(user)
             console.log(data)

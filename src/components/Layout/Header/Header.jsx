@@ -1,15 +1,23 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import {logOutUser} from "../../../redux/reducers/auth";
+import {authUser, logOutUser} from "../../../redux/reducers/auth";
 import {useDispatch} from "react-redux";
-import userIcon from '../../../assets/usericon.png'
 import {AiOutlineUser} from 'react-icons/ai';
+import axios from "../../../utils/axios";
 
 const Header = () => {
 
     const dispatch = useDispatch()
     const user = JSON.parse(localStorage.getItem("@@remember-rootState"))
     console.log(user)
+
+    // const GetUserMe = (data) => {
+    //     axios('/api/get_user/')
+    //         .then((res) => {
+    //             res.data
+    //         })
+    // }
+
     return (
         <header className='header'>
             <div className="container">
@@ -18,7 +26,7 @@ const Header = () => {
                         B T <span>C</span>
                     </div>
                     <div className="header__center">
-                        <Link className='header__center-link' to=''>All product</Link>
+                        <Link className='header__center-link' to=''>All Product</Link>
 
                     </div>
                     {
