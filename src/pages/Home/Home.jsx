@@ -1,10 +1,18 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState,useRef,useLayoutEffect,useCallback} from 'react';
 import Diagramma from "../../components/Diagramma/Diagramma.jsx";
 import AllCryptocurrency from "../../components/AllCryptocurrency/AllCryptocurrency";
 
 const Home = () => {
+
+    const h2ref = useRef(null);
+
+    const scrollToRef = useCallback(() => {
+        if (h2ref.current) {
+            h2ref.current.scrollIntoView();
+        }
+    }, [h2ref]);
+
     const [data, setData] = useState([]);
-    console.log(data)
     useEffect(() => {
         const ws = new window.WebSocket('ws://127.0.0.1:8000/ws/bitcoin/');
 
@@ -12,6 +20,7 @@ const Home = () => {
             try {
                 const newData = JSON.parse(event.data);
                 setData(Array.isArray(newData) ? newData : []);
+                scrollToRef()
             } catch (error) {
                 console.error('Error parsing WebSocket data:', error);
             }
@@ -22,14 +31,17 @@ const Home = () => {
         };
     }, []);
 
-    console.log(JSON.parse(localStorage.getItem("@@remember-rootState")))
+    useEffect(() => {
+        scrollToRef();
+    }, [data, scrollToRef]);
+
     return (
         <div>
             {JSON.parse(localStorage.getItem("@@remember-rootState"))?.user ? <>
                 <Diagramma data={data}/>
                 <AllCryptocurrency data={data}/>
             </>  : <div className='container'>
-                <h1 className='form__title'>Do you want to look at the price of cryptocurrencies? Register</h1>
+                <h1 ref={h2ref} className='form__title'>Do you want to look at the price of cryptocurrencies? Register</h1>
             </div>}
 
         </div>

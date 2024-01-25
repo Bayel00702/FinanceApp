@@ -2,8 +2,8 @@ import React from 'react';
 import InputMask from 'react-input-mask';
 import {useForm} from 'react-hook-form'
 import axios from "../../utils/axios";
-import {useDispatch, useSelector} from "react-redux";
-import {authUser} from "../../redux/reducers/auth";
+import {useDispatch, useSelector,} from "react-redux";
+import {authUser,setUser} from "../../redux/reducers/auth";
 import {Link, useLocation, useNavigate} from "react-router-dom";
 
 
@@ -39,11 +39,12 @@ const Form = () => {
         axios.post('/api/register/', {...data}).then(res => {
                 dispatch(authUser(res.data));
                 navigate('/');
-                localStorage.setItem('@@remember-rootState', JSON.stringify({"user":{...res.data}}))
+            localStorage.setItem('@@remember-rootState', JSON.stringify({"user":{...res.data}}))
             console.log(res)
             })
             .catch((err) =>  console.log(err));
     };
+
 
     const onSubmit = (data) => {
         const {...user} = data

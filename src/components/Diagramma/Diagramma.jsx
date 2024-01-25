@@ -2,7 +2,6 @@ import React from 'react';
 import ChartJS from '../Diagramma/Chart/Chart';
 
 const Diagramma = ({data}) => {
-    console.log(data)
     const name = data.map((item) => {
         return item.symbol
     })
@@ -26,7 +25,6 @@ const Diagramma = ({data}) => {
             },
         ],
     };
-    console.log(chartData)
     return (
         <section className="diagrama">
             <ul className="diagrama__list">
