@@ -117,11 +117,6 @@ const Profile = () => {
                                                placeholder={user.email} type="email"/>
                                     </label>
                                     <label htmlFor="" className="profile__right-label">
-                                        <h3 className="profile__right-subtitle">User Name:</h3>
-                                        <input
-                                            className='profile__right-input' placeholder={user.username} type="text"/>
-                                    </label>
-                                    <label htmlFor="" className="profile__right-label">
                                         <h3 className="profile__right-subtitle">First Name:</h3>
                                         <input
                                             onChange={(e) => setUpdatedProfile({ ...updatedProfile, first_name: e.target.value })}
